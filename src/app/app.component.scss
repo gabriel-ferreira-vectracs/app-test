@@ -1,0 +1,44 @@
+@font-face {
+    font-family: "cinetype";
+    src: local("cinetype"), url("/assets/GT-Cinetype.otf") format("truetype");
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #171717;
+}
+
+.info-container {
+    margin-top: 2rem;
+}
+
+.info-container p {
+    font-family: 'cinetype';
+    color: #F3F3F3;
+}
+
+.letter {
+    margin-left: .3rem;
+}
+
+.anime-letter {
+    animation: moveLetter ease 1.5s infinite;
+}
+
+@keyframes moveLetter {
+    0% {
+        transform: translateY(0);
+    }
+    30% {
+        transform: translateY(-1rem) rotate(-15deg);
+    }
+    100% {
+        transform: translateY(0);
+        transform: rotate(0deg);
+    }
+}
