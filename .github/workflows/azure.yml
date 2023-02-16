@@ -1,5 +1,4 @@
-# Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
-# More GitHub Actions for Azure: https://github.com/Azure/actions
+## Basic config file to deploy this project on Azure #
 
 name: Build and deploy site vectra to Azure Web App - vectrateste
 
@@ -11,7 +10,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     steps:
       - uses: actions/checkout@v2
@@ -19,16 +18,13 @@ jobs:
       - name: Set up Node.js version
         uses: actions/setup-node@v1
         with:
-          node-version: '16.x'
+          node-version: '18.x'
 
       - name: npm install and build
         run: |
           npm install
           npm run build --if-present
           # npm run test --if-present
-          
-     # - name: Zip artifact for deployment
-     #   run: zip release.zip ./* -r ##
       
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
@@ -53,7 +49,7 @@ jobs:
         uses: azure/webapps-deploy@v2
         id: deploy-to-webapp
         with:
-          app-name: 'vectrateste'
+          app-name: 'vectrasiteteste'
           slot-name: 'production'
-          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+          publish-profile: ${{ secrets.PUBLISH_PROFILE }}
           package: .
